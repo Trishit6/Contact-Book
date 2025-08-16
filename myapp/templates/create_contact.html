@@ -1,0 +1,35 @@
+{% extends "base.html"%}
+{% block content %}
+
+<div class="form-body">
+  <div class="card_box">
+      <div class="form_header">
+        <div><a href="/contact"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="24" viewBox="0 0 12 24"><path fill="#fff" fill-rule="evenodd" d="m3.343 12l7.071 7.071L9 20.485l-7.778-7.778a1 1 0 0 1 0-1.414L9 3.515l1.414 1.414z"/></svg></a></div>
+        <div>Contact Form</div>
+      </div>
+
+      <form action="{{url_for('contact.create')}}" method="POST">
+        <div class="form_group">
+          <i class="fas fa-user icon"></i>
+          <input type="text" placeholder="Name" name="name" required>
+        </div>
+    
+        <div class="form_group">
+          <i class="fas fa-phone icon"></i>
+          <input type="number" placeholder="Phone No" name="phone_no" required>
+        </div>
+
+        <div class="form_group">
+          <i class="fas fa-envelope icon"></i>
+          <input type="email" placeholder="Email" name="email" required>
+        </div>
+        
+        <div class="form_footer">
+          <button type="submit" class="btn-custom">Save to contact</button>
+        </div>
+      </form>
+  </div>
+</div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+{% endblock%}

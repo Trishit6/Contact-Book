@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="bar-header">
+  <div class="addcontact">
+    <a href="/contact/create">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.5 18.749v-12.8c0-1.12 0-1.68.218-2.108a2 2 0 0 1 .874-.874c.428-.218.988-.218 2.108-.218h8.6c1.12 0 1.68 0 2.108.218a2 2 0 0 1 .874.874c.218.427.218.987.218 2.108v4.301m-15 8.499c0 .467 0 .7.039.895a2 2 0 0 0 1.568 1.569c.195.039.429.039.896.039h3.247M4.5 18.749h4.75M8.96 9.25h6.08c.336 0 .504 0 .632-.065a.6.6 0 0 0 .263-.263C16 8.794 16 8.626 16 8.29V7.21c0-.336 0-.504-.065-.632a.6.6 0 0 0-.263-.263c-.128-.065-.296-.065-.632-.065H8.96c-.336 0-.504 0-.632.065a.6.6 0 0 0-.263.263C8 6.706 8 6.874 8 7.21v1.08c0 .336 0 .504.065.632a.6.6 0 0 0 .263.263c.128.065.296.065.632.065"/><path fill="currentColor" fill-rule="evenodd" d="M17.5 23a5.5 5.5 0 1 0 0-11a5.5 5.5 0 0 0 0 11m0-8.993a.5.5 0 0 1 .5.5V17h2.493a.5.5 0 1 1 0 1H18v2.493a.5.5 0 1 1-1 0V18h-2.493a.5.5 0 1 1 0-1H17v-2.493a.5.5 0 0 1 .5-.5" clip-rule="evenodd"/></g></svg>
+      Add to contacts
+    </a>
+  </div>
+  <form action="{{url_for('contact.search')}}" method="POST">
+    <div class="centered-container">
+      <input type="text" name="text" class="search-input" placeholder="Search..." >
+      <button type="submit" class="search-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="10" cy="8" r="4" fill="currentColor"/><path fill="currentColor" d="M10.35 14.01C7.62 13.91 2 15.27 2 18v2h9.54c-2.47-2.76-1.23-5.89-1.19-5.99m9.08 4.01c.36-.59.57-1.28.57-2.02c0-2.21-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4c.74 0 1.43-.22 2.02-.57L20.59 22L22 20.59zM16 18c-1.1 0-2-.9-2-2s.9-2 2-2s2 .9 2 2s-.9 2-2 2"/></svg>
+      </button>
+          </div>
+    </div>
+  </form>
+  
+<table class="table">
+    <thead>
+      <tr>
+        <th>Sl No</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th colspan=2>Action</th>
+      </tr>
+    </thead>
+    <tbody> 
+      {% for i in contacts %} 
+      <tr>
+          <td>{{ loop.index }}</td>
+          <td>{{i['name']}}</td>
+          <td>{{i['phone_no']}}</td>
+          <td>{{i['email']}} </td>
+          <td>
+            <div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M6 20h5v2H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6.3c-.22.12-.43.26-.61.44L18 12.13V4h-5v8l-2.5-2.25L8 12V4H6zm16.85-6.53l-1.32-1.32c-.2-.2-.53-.2-.72 0l-.98.98l2.04 2.04l.98-.98c.2-.19.2-.52 0-.72M13 19.96V22h2.04l6.13-6.12l-2.04-2.05z"/></svg><div>
+            <div><a href="{{url_for("contact.update",id=i.id )}}">edit</a></div>
+          </td>
+
+      </tr>
+      {% endfor%}
+    </tbody>
+  </table>
+  
+{% endblock%}
