@@ -19,7 +19,7 @@ Frontend: HTML, CSS, JavaScript (or React/Vue for dynamic UI)
 
 Backend: Node.js / Django / Laravel (depending on your implementation)
 
-Database: MySQL / MongoDB / SQLite
+Database: MySQL / SQLite
 
 🎯 Goal
 Provide a digital alternative to traditional contact books, making it easier to manage and access contact information securely and efficiently.
